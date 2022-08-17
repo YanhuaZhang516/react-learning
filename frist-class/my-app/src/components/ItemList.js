@@ -1,20 +1,6 @@
 import Item from "./item";
 
 function ItemList() {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
   const items = [
     {
       year: "2011",
