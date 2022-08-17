@@ -15,18 +15,15 @@ function Item(props) {
     "November",
     "December",
   ];
-  var today = new Date();
   return (
     <div className="expense-item">
       <div className="expense-date ">
-        <div className="expense-date__month">
-          {monthNames[today.getMonth()]}
-        </div>
-        <div className="expense-date__year">{today.getFullYear()}</div>
-        <div className="expense-date__day">{today.getDate()}</div>
+        <div className="expense-date__month">{monthNames[props.month - 1]}</div>
+        <div className="expense-date__year">{props.year}</div>
+        <div className="expense-date__day">{props.day}</div>
       </div>
-      <h2>here is header2</h2>
-      <div className="expense-item__price">$700</div>
+      <h2>{props.description}</h2>
+      <div className="expense-item__price">{props.price}</div>
     </div>
   );
 }

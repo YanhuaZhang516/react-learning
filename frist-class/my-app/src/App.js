@@ -1,10 +1,12 @@
 import "./App.css";
 import Item from "./components/item";
+import ItemList from "./components/ItemList";
+
 function App() {
   return (
     <div className="App">
       <div className="expenses">
-        <Item></Item>
+        <ItemList></ItemList>
       </div>
     </div>
   );
