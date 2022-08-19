@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import Item from "./item";
 
 function ItemList() {
@@ -25,9 +26,10 @@ function ItemList() {
     },
   ];
   return (
-    <div>
+    <div className="expenses">
       {items.map((item) => (
         <Item
+          key={uid(5)}
           year={item.year}
           month={item.month}
           day={item.day}
