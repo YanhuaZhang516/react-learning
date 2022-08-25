@@ -1,16 +1,25 @@
 import "./ExpenseForm.css";
 import React, { useState } from "react";
+import { useContext } from "react";
+import { ItemContext } from "../store/ItemProvider";
 
 function ExpenseForm() {
   const [newTitle, setNewTitle] = useState("");
   const [newAmount, setNewAmount] = useState("");
   const [newDate, setNewDate] = useState("");
+  const { addItem } = useContext(ItemContext);
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log(newTitle);
-    console.log(newAmount);
-    console.log(newDate);
+    let [year, month, day] = newDate.split("-");
+    const item = {
+      year: year,
+      month: Number(month),
+      day: day,
+      description: newTitle,
+      price: "$" + newAmount,
+    };
+    addItem(item);
   }
 
   return (
