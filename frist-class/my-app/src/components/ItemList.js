@@ -1,30 +1,10 @@
 import { uid } from "uid";
-import Item from "./item";
+import Item from "./Item";
+import { useContext } from "react";
+import { ItemContext } from "../store/ItemProvider";
 
 function ItemList() {
-  const items = [
-    {
-      year: "2011",
-      month: 12,
-      day: "01",
-      description: "House Issurance",
-      price: "$700",
-    },
-    {
-      year: "2012",
-      month: 1,
-      day: "01",
-      description: "New Car",
-      price: "$3000",
-    },
-    {
-      year: "2013",
-      month: 11,
-      day: "06",
-      description: "New TV",
-      price: "$350",
-    },
-  ];
+  const { items } = useContext(ItemContext);
   return (
     <div className="expenses">
       {items.map((item) => (
