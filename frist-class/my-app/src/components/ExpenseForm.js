@@ -20,6 +20,9 @@ function ExpenseForm() {
       price: "$" + newAmount,
     };
     addItem(item);
+    setNewTitle("");
+    setNewAmount("");
+    setNewDate("");
   }
 
   return (

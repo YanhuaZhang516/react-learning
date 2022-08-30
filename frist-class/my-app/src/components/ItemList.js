@@ -1,13 +1,22 @@
 import { uid } from "uid";
 import Item from "./Item";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { ItemContext } from "../store/ItemProvider";
+import ExpenseFilter from "./ExpenseFilter";
+import { useState } from "react";
 
 function ItemList() {
   const { items } = useContext(ItemContext);
+  const [selectYear, setSelectYear]= useState("2022");
+
+  const filteredItems = useMemo(()=>{
+    return items.filter((item)=> item.year===selectYear)
+  },[items,selectYear]);
+
   return (
     <div className="expenses">
-      {items.map((item) => (
+      <ExpenseFilter selectYear={selectYear} setSelectYear={setSelectYear}></ExpenseFilter>
+      {filteredItems.length >0? (filteredItems.map((item) => (
         <Item
           key={uid(5)}
           year={item.year}
@@ -16,8 +25,11 @@ function ItemList() {
           description={item.description}
           price={item.price}
         ></Item>
-      ))}
+      ))):(
+        <div className="not-content">No expense item found</div>
+      )}      
     </div>
+
   );
 }
 
