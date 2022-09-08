@@ -13,6 +13,7 @@ function ItemList() {
   const filteredItems = useMemo(() => {
     return items.filter((item) => item.year === selectYear);
   }, [items, selectYear]);
+  console.log(filteredItems)
 
   return (
     <div className="expenses">
@@ -20,7 +21,7 @@ function ItemList() {
         selectYear={selectYear}
         setSelectYear={setSelectYear}
       ></ExpenseFilter>
-      <Chart></Chart>
+      <Chart filteredItems={filteredItems}></Chart>
       {filteredItems.length > 0 ? (
         filteredItems.map((item) => (
           <Item

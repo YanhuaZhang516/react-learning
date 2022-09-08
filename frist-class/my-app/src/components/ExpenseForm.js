@@ -17,7 +17,7 @@ function ExpenseForm() {
       month: Number(month),
       day: day,
       description: newTitle,
-      price: "$" + newAmount,
+      price: Number(newAmount),
     };
     addItem(item);
     setNewTitle("");

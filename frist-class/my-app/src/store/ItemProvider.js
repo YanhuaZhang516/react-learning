@@ -4,25 +4,25 @@ export const ItemContext = createContext();
 const ItemProvider = ({ children }) => {
   const intialItems = [
     {
-      year: "2011",
+      year: "2022",
       month: 12,
       day: "01",
       description: "House Issurance",
-      price: "$700",
+      price: 700,
     },
     {
-      year: "2012",
+      year: "2022",
       month: 1,
       day: "01",
       description: "New Car",
-      price: "$3000",
+      price: 3000,
     },
     {
-      year: "2013",
+      year: "2022",
       month: 11,
       day: "06",
       description: "New TV",
-      price: "$350",
+      price: 350,
     },
   ];
   const [items, setItems] = useState(intialItems);
