@@ -1,38 +1,38 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import { fetchItems } from "../api/fetchItems";
 
 export const ItemContext = createContext();
 const ItemProvider = ({ children }) => {
-  const intialItems = [
-    {
-      year: "2022",
-      month: 12,
-      day: "01",
-      description: "House Issurance",
-      price: 700,
-    },
-    {
-      year: "2022",
-      month: 1,
-      day: "01",
-      description: "New Car",
-      price: 3000,
-    },
-    {
-      year: "2022",
-      month: 11,
-      day: "06",
-      description: "New TV",
-      price: 350,
-    },
-  ];
-  const [items, setItems] = useState(intialItems);
+  
+  const [items, setItems] = useState([]);
+
+  useEffect(()=>{
+    fetchItems().then((data)=>{
+      setItems(data);
+    })
+  },[])
 
   const addItem = (item) => {
     setItems([item, ...items]);
   };
 
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   return (
-    <ItemContext.Provider value={{ items, addItem }}>
+    <ItemContext.Provider value={{ items, addItem, monthNames }}>
       {children}
     </ItemContext.Provider>
   );

@@ -1,14 +1,11 @@
 import "./ChartBar.css";
 
-function ChartBar({ monthName, maxValue, monthPrices}) {
+function ChartBar(props) {
   let barFillHeight = "0%"
-  if (maxValue>0){
-    barFillHeight = Math.round((monthPrices/maxValue)*100) +"%"
+  if (props.maxValue>0){
+    barFillHeight = Math.round((props.monthPrices/props.maxValue)*100) +"%"
   }
-  console.log("price========>"+monthPrices)
-  console.log("max value ======"+maxValue)
-  console.log("monthName====="+monthName)
-  console.log(barFillHeight)
+
 
   return (
     <div className="chart-bar">
@@ -18,7 +15,7 @@ function ChartBar({ monthName, maxValue, monthPrices}) {
           style={{ height: barFillHeight }}
         ></div>
       </div>
-      <div className="chart-bar__label">{monthName}</div>
+      <div className="chart-bar__label">{props.monthName}</div>
     </div>
   );
 }

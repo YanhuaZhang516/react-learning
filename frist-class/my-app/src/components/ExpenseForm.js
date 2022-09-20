@@ -2,12 +2,20 @@ import "./ExpenseForm.css";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { ItemContext } from "../store/ItemProvider";
+import axios from "axios"
+// import { postItem } from "../api/postItem";
 
 function ExpenseForm() {
   const [newTitle, setNewTitle] = useState("");
   const [newAmount, setNewAmount] = useState("");
   const [newDate, setNewDate] = useState("");
   const { addItem } = useContext(ItemContext);
+
+  const ITEMS_URL = 'http://localhost:3000/posts'
+  const postItem=(item)=>axios.post(ITEMS_URL,item).then((response)=>response.config.data).then((data)=>{
+    console.log(data)
+  }).then(addItem(item))
+
 
   function submitHandler(e) {
     e.preventDefault();
@@ -19,10 +27,14 @@ function ExpenseForm() {
       description: newTitle,
       price: Number(newAmount),
     };
-    addItem(item);
+    // addItem(item);
+    postItem(item);
     setNewTitle("");
     setNewAmount("");
     setNewDate("");
+
+   
+
   }
 
   return (

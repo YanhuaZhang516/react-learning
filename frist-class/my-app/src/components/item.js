@@ -1,21 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ItemContext } from "../store/ItemProvider";
 
 function Item(props) {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
+  const {monthNames} = useContext(ItemContext)
+  
   return (
     <div className="expense-item">
       <div className="expense-date ">

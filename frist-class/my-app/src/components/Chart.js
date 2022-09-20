@@ -1,22 +1,11 @@
 import "./Chart.css";
 import ChartBar from "./ChartBar";
 import { uid } from "uid";
+import React, { useContext } from "react";
+import { ItemContext } from "../store/ItemProvider";
 
 function Chart({filteredItems}) {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const {monthNames} = useContext(ItemContext)
   const ChartMap = new Map();
   monthNames.map((monthName)=> (ChartMap.set(monthName,0)))
 
@@ -25,9 +14,6 @@ function Chart({filteredItems}) {
 )
 
 const MaxValue = Math.max(...ChartMap.values())
-console.log(MaxValue)
-console.log("here is maxValue====="+MaxValue)
-console.log(ChartMap.get(monthNames[2]))
 
 
   return (

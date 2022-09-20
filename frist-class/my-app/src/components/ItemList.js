@@ -13,7 +13,7 @@ function ItemList() {
   const filteredItems = useMemo(() => {
     return items.filter((item) => item.year === selectYear);
   }, [items, selectYear]);
-  console.log(filteredItems)
+
 
   return (
     <div className="expenses">
